@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>{{ title }}</h1>
+      <button (click)="increaseCount()" class="btn btn-primary">Increase</button>
+      <p>Count: {{ count }}</p>
+
+      <input type="text" [(ngModel)]="myContent">
+      <h2>{{ myContent }}</h2>
+      @for(todo of todos; track todo.id){
+        <li>{{todo.title}} - {{todo.owner}}</li>
+      }
+    </div>
+  </div>
+</div>

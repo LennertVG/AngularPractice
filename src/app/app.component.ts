@@ -11,13 +11,5 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  count:number=0;
-  title = 'xMas Shopping';
-  myContent:string='';
-
-  increaseCount() {
-    this.count++;
-  }
-
   //  BLIJF ALTIJD BINNEN DE CLASS VAN HET COMPONENT
 }
