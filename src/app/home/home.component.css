@@ -6,3 +6,10 @@ div{
     margin-top: 10px;
     border-radius: 20px
 }
+.btn{
+    margin: 2px !important
+}
+.currentUser{
+    font-size: xx-large;
+    text-align: center;
+}

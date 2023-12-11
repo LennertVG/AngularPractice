@@ -23,6 +23,12 @@
       "owner": "Cobe",
       "done": false,
       "id": 8
+    },
+    {
+      "title": "azefef",
+      "owner": "Cobe",
+      "done": false,
+      "id": 9
     }
   ],
   "users": [
@@ -45,19 +51,6 @@
       "name": "userName",
       "password": "password",
       "id": 4
-    },
-    {
-      "id": 5
-    },
-    {
-      "name": {},
-      "password": {},
-      "id": 6
-    },
-    {
-      "name": {},
-      "password": {},
-      "id": 7
     }
   ]
 }

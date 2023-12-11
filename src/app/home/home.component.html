@@ -27,16 +27,15 @@
             <div class="form-group">
               <label for="newPassword">Password</label>
               <input type="password" class="form-control" id="newPassword" placeholder="Password">
+              <button type="submit" (click)="addUser()" class="btn btn-primary">Submit</button>
             </div>
-            <button type="submit" (click)="addUser()" class="btn btn-primary">Submit</button>
           </form>
-          <hr>
-          <!-- display currently selected user -->
-        {{user}}
       </div>
       <hr>
+      <!-- display currently selected user -->
+      <p class="currentUser">{{user}} </p>
       <!-- Shows off binding with text updating live -->
-      <input type="text" [(ngModel)]="myContent">
+      <input type="text" [(ngModel)]="myContent" placeholder="add item for current user" style="width: 100%;">
       <h2>{{ myContent }}</h2>
       <!-- Post button which pushes the data in myContent -->
       <button (click)="postData()" class="btn btn-primary">Post</button>
@@ -49,9 +48,9 @@
         <button (click)="deleteData(todo)" class="btn btn-danger">X</button>
         @if(todo.done){
           <!-- the decoration strikes through the ones you have bought -->
-          <i style="text-decoration:line-through;">{{todo.title}} - {{todo.owner}}</i><br>
+          <i style="text-decoration:line-through;">{{todo.title}} - {{todo.owner}}</i><hr>
         }@else{
-          <i>{{todo.title}} - {{todo.owner}}</i><br>
+          <i>{{todo.title}} - {{todo.owner}}</i><hr>
         }
       }
     </div>
