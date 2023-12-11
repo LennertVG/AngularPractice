@@ -7,8 +7,16 @@
 
       <input type="text" [(ngModel)]="myContent">
       <h2>{{ myContent }}</h2>
+      <button (click)="postData()" class="btn btn-primary">Post</button>
+      <h3>My Shoppinglist</h3>
       @for(todo of todos; track todo.id){
-        <li>{{todo.title}} - {{todo.owner}}</li>
+        <!-- todo makes sure it only updates the right one, see also the typeScript -->
+        <button (click)="changeDone(todo)" class="btn btn-primary">✓</button>
+        @if(todo.done){
+          <i style="text-decoration:line-through;">{{todo.title}} - {{todo.owner}}</i><br>
+        }@else{
+          <i >{{todo.title}} - {{todo.owner}}</i><br>
+        }
       }
     </div>
   </div>

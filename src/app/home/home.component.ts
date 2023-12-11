@@ -30,4 +30,32 @@ export class HomeComponent {
     this.fetchMyData();
   }
 
+  // todo:any helps the code select the right todo to update
+  changeDone (todo:any) {
+    todo.done = !todo.done;
+  }
+
+  postData () {
+    const options = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/2023.5.8'},
+      // Stringify omdat we tekst moeten meegeven
+      body: JSON.stringify({
+        'title': this.myContent,
+        'owner': 'V',
+        'done':false,
+      })
+    };
+    
+    fetch('http://localhost:3000/todo', options)
+      .then(response => response.json())
+      .then(response =>{ 
+        console.log(response);
+        // refresh data
+        this.fetchMyData();
+        // make sure the content cleared upon post
+        this.myContent = '';
+      })
+      .catch(err => console.error(err));
+  }
 }
