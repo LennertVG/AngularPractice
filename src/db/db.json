@@ -17,6 +17,12 @@
       "owner": "Cobe",
       "done": false,
       "id": 7
+    },
+    {
+      "title": "Dobbelstenen",
+      "owner": "Cobe",
+      "done": false,
+      "id": 8
     }
   ],
   "users": [
@@ -34,6 +40,24 @@
       "id": 3,
       "name": "Cobe",
       "password": "ForTheEmperor123"
+    },
+    {
+      "name": "userName",
+      "password": "password",
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "name": {},
+      "password": {},
+      "id": 6
+    },
+    {
+      "name": {},
+      "password": {},
+      "id": 7
     }
   ]
 }

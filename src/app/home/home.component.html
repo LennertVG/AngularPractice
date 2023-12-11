@@ -10,7 +10,7 @@
       <!-- Demonstration of the {{ }} usage -->
       <p>URL api : {{ url }}</p>
       <p>URL Users: {{ urlUsers }}</p>
-      <!-- dropdown menu -->  
+      <!-- users dropdown menu -->  
       <div class="dropdown">
         <select class="form-control" [(ngModel)]="user">
           <!-- iterate for array -->
@@ -18,6 +18,19 @@
           <!-- Using the brackets you can show the user which is currently selected, though because it's already assigned in the select field, it takes that value already --> 
           <option [value]="user.name">{{user.name}}</option>
           }</select>
+          <hr>
+          <form>
+            <div class="form-group">
+              <label for="newUser">Username</label>
+              <input type="text" class="form-control" id="newUser" placeholder="Enter Username">
+            </div>
+            <div class="form-group">
+              <label for="newPassword">Password</label>
+              <input type="password" class="form-control" id="newPassword" placeholder="Password">
+            </div>
+            <button type="submit" (click)="addUser()" class="btn btn-primary">Submit</button>
+          </form>
+          <hr>
           <!-- display currently selected user -->
         {{user}}
       </div>

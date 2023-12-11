@@ -21,6 +21,10 @@ export class HomeComponent {
   users: any[]=[];
   // single instance of user acquired using ngmodel on select in my view
   user: any;
+  newUser: any;
+  newPassword: any;
+  userName: any;
+  password: any;
 
   // Christmas counter increase or decrease value
   increaseCount() {
@@ -116,6 +120,30 @@ export class HomeComponent {
         console.log(response);
         this.fetchMyData();
       })
+      .catch(err => console.error(err));
+  }
+
+  // New user command WIP
+  addUser() {
+    const userName = document.getElementById('newUser');
+    const password = document.getElementById('newPassword');
+  
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'insomnia/2023.5.8'
+      },
+      // RETURNS [object, Object, please fix]
+      body: JSON.stringify({
+        'name': userName,
+        'password': password
+      })
+    };
+  
+    fetch('http://localhost:3000/users/', options)
+      .then(response => response.json())
+      .then(response => console.log(response))
       .catch(err => console.error(err));
   }
 }
