@@ -22,6 +22,7 @@ export class HomeComponent {
   // single instance of user acquired using ngmodel on select in my view
   user: any;
 
+  // Christmas counter increase or decrease value
   increaseCount() {
     this.count++;
     // toString omdat localstorage geen integers enzo kan opslaan
@@ -33,13 +34,13 @@ export class HomeComponent {
     localStorage.setItem('count', this.count.toString());
   }
 
-
+// Fetches the todos api-endpoint and adds it to an array named todos
   fetchMyData() {
     fetch(this.url)
     .then(response => response.json())
     .then(json => this.todos = json)
   }
-
+// fetches the users api-endpoint and adds it to an array named users
   fetchMyUsers() {
     fetch(this.urlUsers)
     .then(response => response.json())
@@ -63,7 +64,7 @@ export class HomeComponent {
       headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/8.3.0'},
       body: JSON.stringify(todo)
     };
-
+    // The fetch is modified with the todo.id to use the current id as it's reference for what needs to be updated
     fetch('http://localhost:3000/todo/' + todo.id, options)
       .then(response => response.json())
       .then(response => {
@@ -85,7 +86,7 @@ export class HomeComponent {
         'done':false,
       })
     };
-
+    // Selects the todo-endpoint and uses the options in the postData command on that dataset
     fetch('http://localhost:3000/todo', options)
       .then(response => response.json())
       .then(response =>{ 
@@ -98,18 +99,23 @@ export class HomeComponent {
       .catch(err => console.error(err));
   }
 
-  // // WIP => Deletebutton
-  // deleteData(todo:any) {
-  //   let deleteURL = 'http://localhost:3000/todo'+'/'+todo.id
-  //   const options = {
-  //     method: 'DELETE',
-  //     headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/2023.5.8'},
-  //     body: 'false'
-  //   };
-    
-  //   fetch(deleteURL, options)
-  //     .then(response => response.json())
-  //     .then(response => console.log(response))
-  //     .catch(err => console.error(err));
-  // }
+  // Deletebutton
+  deleteData(todo: any) {
+    // (taken from insomnia) uses the DELETE function to delete an entire element
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'insomnia/2023.5.8'
+      },
+    };
+  // The fetch is modified with the todo.id to use the current id as it's reference for what needs to be deleted
+    fetch('http://localhost:3000/todo/' + todo.id, options)
+      .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        this.fetchMyData();
+      })
+      .catch(err => console.error(err));
+  }
 }

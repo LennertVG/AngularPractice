@@ -1,34 +1,22 @@
 {
   "todo": [
     {
-      "id": 1,
-      "title": "Soupmaker",
-      "owner": "V",
-      "done": false
-    },
-    {
-      "id": 2,
-      "title": "Douglas Skincare",
-      "owner": "Z",
-      "done": false
-    },
-    {
-      "id": 3,
-      "title": "Soupmaker",
-      "owner": "A",
-      "done": false
-    },
-    {
-      "id": 4,
-      "title": "Drone",
-      "owner": "M",
-      "done": false
-    },
-    {
-      "title": "ez'rezq",
+      "title": "Fourth Wing Special edition",
       "owner": "Lauren",
       "done": false,
       "id": 5
+    },
+    {
+      "title": "Cthullu dice tower",
+      "owner": "Lennert",
+      "done": false,
+      "id": 6
+    },
+    {
+      "title": "Dice, just more dice",
+      "owner": "Cobe",
+      "done": false,
+      "id": 7
     }
   ],
   "users": [
@@ -41,6 +29,11 @@
       "id": 2,
       "name": "Lauren",
       "password": "Password1"
+    },
+    {
+      "id": 3,
+      "name": "Cobe",
+      "password": "ForTheEmperor123"
     }
   ]
 }

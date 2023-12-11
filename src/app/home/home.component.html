@@ -15,9 +15,10 @@
         <select class="form-control" [(ngModel)]="user">
           <!-- iterate for array -->
           @for(user of users; track user.id){
-          <!-- Using the brackets you can show the user which is currently selected --> 
-          <option [value]>{{user.name}}</option>
+          <!-- Using the brackets you can show the user which is currently selected, though because it's already assigned in the select field, it takes that value already --> 
+          <option [value]="user.name">{{user.name}}</option>
           }</select>
+          <!-- display currently selected user -->
         {{user}}
       </div>
       <hr>
@@ -31,8 +32,8 @@
       @for(todo of todos; track todo.id){
         <!-- todo makes sure it only updates the right one, see also the typeScript -->
         <button (click)="changeDone(todo)" class="btn btn-primary">✓</button>
-        <!-- Delete button WIP
-        <button (click)="deleteData(todo)" class="btn btn-danger">X</button> -->
+        <!-- Delete button -->
+        <button (click)="deleteData(todo)" class="btn btn-danger">X</button>
         @if(todo.done){
           <!-- the decoration strikes through the ones you have bought -->
           <i style="text-decoration:line-through;">{{todo.title}} - {{todo.owner}}</i><br>
