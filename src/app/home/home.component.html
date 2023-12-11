@@ -1,10 +1,25 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+      <!-- Title of component -->
       <h1>{{ title }}</h1>
       <button (click)="increaseCount()" class="btn btn-primary">Increase</button>
-      <p>Count: {{ count }}</p>
-
+      <button (click)="decreaseCount()" class="btn btn-danger m-1">Decrease</button>
+      <p>X-mas spirit counter: {{ count }}</p>
+      <hr>
+      <!-- Demonstration of the {{ }} usage -->
+      <p>URL api : {{ url }}</p>
+      <p>URL Users: {{ urlUsers }}</p>
+      <!-- dropdown menu -->  
+      <div class="dropdown">
+        <select class="form-control" [(ngModel)]="user">
+          <!-- Using the brackets you can show the user which is currently selected -->
+          @for(user of users; track user.id){
+          <option [value]>{{user.name}}</option>
+          }</select>
+        {{user}}
+      </div>
+      <hr>
       <input type="text" [(ngModel)]="myContent">
       <h2>{{ myContent }}</h2>
       <button (click)="postData()" class="btn btn-primary">Post</button>
@@ -12,10 +27,12 @@
       @for(todo of todos; track todo.id){
         <!-- todo makes sure it only updates the right one, see also the typeScript -->
         <button (click)="changeDone(todo)" class="btn btn-primary">✓</button>
+        <!-- Delete button WIP
+        <button (click)="deleteData(todo)" class="btn btn-danger">X</button> -->
         @if(todo.done){
           <i style="text-decoration:line-through;">{{todo.title}} - {{todo.owner}}</i><br>
         }@else{
-          <i >{{todo.title}} - {{todo.owner}}</i><br>
+          <i>{{todo.title}} - {{todo.owner}}</i><br>
         }
       }
     </div>

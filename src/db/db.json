@@ -23,30 +23,18 @@
       "title": "Drone",
       "owner": "M",
       "done": false
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Lennert",
+      "password": "Password"
     },
     {
-      "id": 5,
-      "title": "book",
-      "owner": "L",
-      "done": true
-    },
-    {
-      "title": "More items",
-      "owner": "V",
-      "done": false,
-      "id": 6
-    },
-    {
-      "title": "test",
-      "owner": "V",
-      "done": false,
-      "id": 7
-    },
-    {
-      "title": "testa",
-      "owner": "V",
-      "done": false,
-      "id": 8
+      "id": 2,
+      "name": "Lauren",
+      "password": "Password1"
     }
   ]
 }
