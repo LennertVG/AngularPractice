@@ -23,8 +23,13 @@ export class HomeComponent {
   user: any;
   newUser: any;
   newPassword: any;
-  userName: any;
-  password: any;
+  newDone: any;
+  payload: any;
+  budget:number=0;
+  storedBudget:number=0;
+  price:any;
+
+
 
   // Christmas counter increase or decrease value
   increaseCount() {
@@ -58,25 +63,48 @@ export class HomeComponent {
     // Pull count from localStorage on initialization
     const storedCount = localStorage.getItem('count');
     this.count = storedCount !== null ? parseInt(storedCount) : 0;
+    // Initialise budget
+    const storedBudget = localStorage.getItem('budget');
+   this.budget = storedBudget !== null ? parseInt(storedBudget) : 20000;
   }
 
   // todo:any helps the code select the right todo to update
-  changeDone(todo:any) {
-    todo.done = !todo.done;
+  // // Old method
+  // changeDone(todo:any) {
+  //   todo.done = !todo.done;
+  //   const options = {
+  //     method: 'PUT',
+  //     headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/8.3.0'},
+  //     body: JSON.stringify(todo)
+  //   };
+  //   // The fetch is modified with the todo.id to use the current id as it's reference for what needs to be updated
+  //   fetch('http://localhost:3000/todo/' + todo.id, options)
+  //     .then(response => response.json())
+  //     .then(response => {
+  //       console.log(response);
+  //       this.fetchMyData();
+  //     })
+  //     .catch(err => console.error(err));
+  changeDone(todo: any) {
+    let newDone = !todo.done;
+
+    let donePayload = JSON.stringify({ done: newDone }); // do not use double quotes
+    console.log(donePayload);
+
     const options = {
-      method: 'PUT',
-      headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/8.3.0'},
-      body: JSON.stringify(todo)
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'User-Agent': 'insomnia/2023.5.8'
+        },
+        body: donePayload
     };
-    // The fetch is modified with the todo.id to use the current id as it's reference for what needs to be updated
+
     fetch('http://localhost:3000/todo/' + todo.id, options)
-      .then(response => response.json())
-      .then(response => {
-        console.log(response);
-        this.fetchMyData();
-      })
-      .catch(err => console.error(err));
-  } 
+        .then(response => response.json())
+        .then(response => this.fetchMyData())
+        .catch(err => console.error(err));
+}
 
 
   postData () {
@@ -123,27 +151,66 @@ export class HomeComponent {
       .catch(err => console.error(err));
   }
 
-  // New user command WIP
+  // New user command
   addUser() {
-    const userName = document.getElementById('newUser');
-    const password = document.getElementById('newPassword');
-  
+    const userData = JSON.stringify({
+      // the this.newUser and this.newPassword refer to the ngModel's in the HTML with the same values, don't forget to declare at the top
+      'name': this.newUser,
+      'password': this.newPassword
+    })
     const options = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'User-Agent': 'insomnia/2023.5.8'
       },
-      // RETURNS [object, Object, please fix]
-      body: JSON.stringify({
-        'name': userName,
-        'password': password
-      })
+      body: userData
     };
   
     fetch('http://localhost:3000/users/', options)
       .then(response => response.json())
+      // This part of the code refreshes the list when a user is added
+      .then(response => {
+        this.fetchMyUsers()
+      })
+      .catch(err => console.error(err));
+      // always clear your forms
+      this.newUser = '';
+      this.newPassword ='';
+  }
+
+  // delete user method
+  deleteUser() {
+    // (taken from insomnia) uses the DELETE function to delete an entire element
+    const options = {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/2023.5.8'},
+      body: 'false'
+    };
+    
+    fetch('http://localhost:3000/users/7', options)
+      .then(response => response.json())
       .then(response => console.log(response))
       .catch(err => console.error(err));
+  }
+
+  // edit product button
+  editData(todo:any){
+    let newItem = prompt("what is the new item?")
+    let payload = JSON.stringify({ title: newItem })
+    console.log(payload)
+    const options = {
+      method: 'PATCH',
+      headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/2023.5.8'},
+      body: payload
+    };
+    
+    fetch('http://localhost:3000/todo/'+todo.id, options)
+      .then(response => response.json())
+      .then(response => this.fetchMyData())
+      .catch(err => console.error(err));
+  }
+  totalPrice(){
+    
   }
 }

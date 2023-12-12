@@ -12,6 +12,7 @@
       <p>URL Users: {{ urlUsers }}</p>
       <!-- users dropdown menu -->  
       <div class="dropdown">
+        <p style="text-align: center; font-size: large;">select a user</p>
         <select class="form-control" [(ngModel)]="user">
           <!-- iterate for array -->
           @for(user of users; track user.id){
@@ -19,26 +20,31 @@
           <option [value]="user.name">{{user.name}}</option>
           }</select>
           <hr>
-          <form>
-            <div class="form-group">
-              <label for="newUser">Username</label>
-              <input type="text" class="form-control" id="newUser" placeholder="Enter Username">
-            </div>
-            <div class="form-group">
-              <label for="newPassword">Password</label>
-              <input type="password" class="form-control" id="newPassword" placeholder="Password">
-              <button type="submit" (click)="addUser()" class="btn btn-primary">Submit</button>
-            </div>
-          </form>
+          <!-- New user adder -->
+          <p style="font-size: large; text-align: center;">add user</p>
+          <!-- Using Angular we will be using ngModels, in this code it serves a similar purpose to the id's we used to use in javascript, but way easier, do keep in mind, this breaks if you use form-tags -->
+          <div class="form-group">
+            <label for="newUser">Username</label>
+            <input [(ngModel)]="newUser" type="text" class="form-control" id="newUser" placeholder="Enter Username">
+          </div>
+          <div class="form-group">
+            <label for="newPassword">Password</label>
+            <input [(ngModel)]="newPassword" type="password" class="form-control" id="newPassword" placeholder="Password">
+            <button type="submit" (click)="addUser()" class="btn btn-primary">Submit</button>
+          </div>
       </div>
       <hr>
       <!-- display currently selected user -->
       <p class="currentUser">{{user}} </p>
+      <!-- Delete user button -->
+      <button (click)="deleteUser()" class="btn btn-danger">Delete user</button>
       <!-- Shows off binding with text updating live -->
-      <input type="text" [(ngModel)]="myContent" placeholder="add item for current user" style="width: 100%;">
+      <input type="text" [(ngModel)]="myContent" placeholder="add item for selected user" style="width: 100%;">
       <h2>{{ myContent }}</h2>
       <!-- Post button which pushes the data in myContent -->
       <button (click)="postData()" class="btn btn-primary">Post</button>
+      <h2>Your budget is {{budget}}</h2>
+      <hr>
       <h3>My Shoppinglist</h3>
       <!-- Iterates the items from the api into a list -->
       @for(todo of todos; track todo.id){
@@ -46,13 +52,18 @@
         <button (click)="changeDone(todo)" class="btn btn-primary">✓</button>
         <!-- Delete button -->
         <button (click)="deleteData(todo)" class="btn btn-danger">X</button>
+        <!-- Edit Button -->
+        <button (click)="editData(todo)" class ="btn btn-secondary">Edit</button>
+        <br>
         @if(todo.done){
           <!-- the decoration strikes through the ones you have bought -->
-          <i style="text-decoration:line-through;">{{todo.title}} - {{todo.owner}}</i><hr>
+          <i style="text-decoration:line-through; font-size: larger; margin-left: 10px;">{{todo.title}} - {{todo.owner}} - €{{todo.price}}</i><hr>
         }@else{
-          <i>{{todo.title}} - {{todo.owner}}</i><hr>
+          <i style="font-size: larger; margin-left: 10px;">{{todo.title}} - {{todo.owner}} - €{{todo.price}}</i><hr>
         }
       }
+      <hr>
+      <h3>Total Spent: </h3>
     </div>
   </div>
 </div>

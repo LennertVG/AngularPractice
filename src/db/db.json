@@ -1,34 +1,25 @@
 {
   "todo": [
     {
-      "title": "Fourth Wing Special edition",
+      "title": "Iron Flame ",
       "owner": "Lauren",
       "done": false,
+      "price":20,
       "id": 5
     },
     {
-      "title": "Cthullu dice tower",
+      "title": "New ring",
       "owner": "Lennert",
       "done": false,
+      "price":5,
       "id": 6
     },
     {
-      "title": "Dice, just more dice",
+      "title": "Dice",
       "owner": "Cobe",
       "done": false,
+      "price":25,
       "id": 7
-    },
-    {
-      "title": "Dobbelstenen",
-      "owner": "Cobe",
-      "done": false,
-      "id": 8
-    },
-    {
-      "title": "azefef",
-      "owner": "Cobe",
-      "done": false,
-      "id": 9
     }
   ],
   "users": [
@@ -51,6 +42,11 @@
       "name": "userName",
       "password": "password",
       "id": 4
+    },
+    {
+      "name": "ccxvvcv",
+      "password": "xvvcxv",
+      "id": 9
     }
   ]
 }
