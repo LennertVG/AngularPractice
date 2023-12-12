@@ -4,7 +4,7 @@
       "title": "Iron Flame ",
       "owner": "Lauren",
       "done": false,
-      "price": 20,
+      "price": "40",
       "id": 5
     },
     {
@@ -15,11 +15,11 @@
       "id": 6
     },
     {
-      "title": "Dice",
+      "title": "MTG Boosters",
       "owner": "Cobe",
       "done": false,
-      "price": 25,
-      "id": 7
+      "id": 7,
+      "price": "20"
     }
   ],
   "users": [

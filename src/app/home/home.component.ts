@@ -28,6 +28,7 @@ export class HomeComponent {
   budget:number=0;
   storedBudget:number=0;
   totalPrice: any;
+  newPrice:number=0;
 
 
 
@@ -89,7 +90,7 @@ export class HomeComponent {
   //       this.fetchMyData();
   //     })
   //     .catch(err => console.error(err));
-  
+
   changeDone(todo: any) {
     // make the newDone the inverse of the current status
     let newDone = !todo.done;
@@ -187,7 +188,7 @@ export class HomeComponent {
   }
 
   // delete user method
-  deleteUser() {
+  deleteUser(user:any) {
     // (taken from insomnia) uses the DELETE function to delete an entire element
     const options = {
       method: 'DELETE',
@@ -195,14 +196,14 @@ export class HomeComponent {
       body: 'false'
     };
     
-    fetch('http://localhost:3000/users/7', options)
+    fetch('http://localhost:3000/users/'+user.id, options)
       .then(response => response.json())
       .then(response => console.log(response))
       .catch(err => console.error(err));
   }
 
   // edit product button
-  editData(todo:any){
+  editData(user:any){
     let newItem = prompt("what is the new item?")
     let payload = JSON.stringify({ title: newItem })
     console.log(payload)
@@ -212,9 +213,26 @@ export class HomeComponent {
       body: payload
     };
     
-    fetch('http://localhost:3000/todo/'+todo.id, options)
+    fetch('http://localhost:3000/todo/'+user.id, options)
       .then(response => response.json())
       .then(response => this.fetchMyData())
       .catch(err => console.error(err));
   }
+
+    // edit product button
+    editPrice(user:any){
+      let newPrice = prompt("what is the new price?")
+      let payload = JSON.stringify({ price: newPrice })
+      console.log(payload)
+      const options = {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/2023.5.8'},
+        body: payload
+      };
+      
+      fetch('http://localhost:3000/todo/'+user.id, options)
+        .then(response => response.json())
+        .then(response => this.fetchMyData())
+        .catch(err => console.error(err));
+    }
 }

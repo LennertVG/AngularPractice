@@ -37,7 +37,7 @@
       <!-- display currently selected user -->
       <p class="currentUser">{{user}} </p>
       <!-- Delete user button -->
-      <button (click)="deleteUser()" class="btn btn-danger">Delete user</button>
+      <button (click)="deleteUser(user)" class="btn btn-danger">Delete user</button>
       <!-- Shows off binding with text updating live -->
       <input type="text" [(ngModel)]="myContent" placeholder="add item for selected user" style="width: 100%;">
       <h2>{{ myContent }}</h2>
@@ -55,6 +55,7 @@
         <button (click)="deleteData(todo)" class="btn btn-danger">X</button>
         <!-- Edit Button -->
         <button (click)="editData(todo)" class ="btn btn-secondary">Edit</button>
+        <button (click)="editPrice(todo)" class ="btn btn-warning">Change Price</button>
         <br>
         @if(todo.done){
           <!-- the decoration strikes through the ones you have bought -->
