@@ -43,7 +43,8 @@
       <h2>{{ myContent }}</h2>
       <!-- Post button which pushes the data in myContent -->
       <button (click)="postData()" class="btn btn-primary">Post</button>
-      <h2>Your budget is {{budget}}</h2>
+      <!-- inbetween the {{}} you can use maths like you see the values getting substracted here -->
+      <h2>Your budget is €{{budget-totalPrice}}</h2>
       <hr>
       <h3>My Shoppinglist</h3>
       <!-- Iterates the items from the api into a list -->
@@ -57,13 +58,14 @@
         <br>
         @if(todo.done){
           <!-- the decoration strikes through the ones you have bought -->
-          <i style="text-decoration:line-through; font-size: larger; margin-left: 10px;">{{todo.title}} - {{todo.owner}} - €{{todo.price}}</i><hr>
+          <i style="text-decoration:line-through; font-size: larger; margin-left: 10px;">{{todo.title}} - {{todo.owner}} |<span> €{{todo.price}}</span></i><hr>
         }@else{
-          <i style="font-size: larger; margin-left: 10px;">{{todo.title}} - {{todo.owner}} - €{{todo.price}}</i><hr>
+          <i style="font-size: larger; margin-left: 10px;">{{todo.title}} - {{todo.owner}} |<span> €{{todo.price}}</span></i><hr>
         }
       }
       <hr>
-      <h3>Total Spent: </h3>
+      <!-- show the total price of all items in the shopping list -->
+      <h3>Total Spent: €{{totalPrice}}</h3>
     </div>
   </div>
 </div>

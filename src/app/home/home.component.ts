@@ -27,7 +27,7 @@ export class HomeComponent {
   payload: any;
   budget:number=0;
   storedBudget:number=0;
-  price:any;
+  totalPrice: any;
 
 
 
@@ -47,7 +47,11 @@ export class HomeComponent {
   fetchMyData() {
     fetch(this.url)
     .then(response => response.json())
-    .then(json => this.todos = json)
+    .then(json => {
+      this.todos = json;
+      // THIS WILL CALCULATE THE TOTAL SPENT IN THE SHOPPING LIST
+      this.totalPrice = this.todos.reduce((total, todo)=>total +parseFloat(todo.price),0)
+    })
   }
 // fetches the users api-endpoint and adds it to an array named users
   fetchMyUsers() {
@@ -65,7 +69,7 @@ export class HomeComponent {
     this.count = storedCount !== null ? parseInt(storedCount) : 0;
     // Initialise budget
     const storedBudget = localStorage.getItem('budget');
-   this.budget = storedBudget !== null ? parseInt(storedBudget) : 20000;
+   this.budget = storedBudget !== null ? parseInt(storedBudget) : 1000;
   }
 
   // todo:any helps the code select the right todo to update
@@ -85,9 +89,11 @@ export class HomeComponent {
   //       this.fetchMyData();
   //     })
   //     .catch(err => console.error(err));
+  
   changeDone(todo: any) {
+    // make the newDone the inverse of the current status
     let newDone = !todo.done;
-
+    // Make the newDone-string so it's compatible with the requests
     let donePayload = JSON.stringify({ done: newDone }); // do not use double quotes
     console.log(donePayload);
 
@@ -97,15 +103,16 @@ export class HomeComponent {
             'Content-Type': 'application/json',
             'User-Agent': 'insomnia/2023.5.8'
         },
+        // just add the payload as it is a json-object
         body: donePayload
     };
 
     fetch('http://localhost:3000/todo/' + todo.id, options)
         .then(response => response.json())
+        // Always update your data
         .then(response => this.fetchMyData())
         .catch(err => console.error(err));
 }
-
 
   postData () {
     const options = {
@@ -209,8 +216,5 @@ export class HomeComponent {
       .then(response => response.json())
       .then(response => this.fetchMyData())
       .catch(err => console.error(err));
-  }
-  totalPrice(){
-    
   }
 }

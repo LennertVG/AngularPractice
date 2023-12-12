@@ -4,21 +4,21 @@
       "title": "Iron Flame ",
       "owner": "Lauren",
       "done": false,
-      "price":20,
+      "price": 20,
       "id": 5
     },
     {
       "title": "New ring",
       "owner": "Lennert",
       "done": false,
-      "price":5,
+      "price": 5,
       "id": 6
     },
     {
       "title": "Dice",
       "owner": "Cobe",
       "done": false,
-      "price":25,
+      "price": 25,
       "id": 7
     }
   ],
