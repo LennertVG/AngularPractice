@@ -19,6 +19,8 @@
           <!-- Using the brackets you can show the user which is currently selected, though because it's already assigned in the select field, it takes that value already --> 
           <option [value]="user.name">{{user.name}}</option>
           }</select>
+          <!-- Delete user button -->
+          <button (click)="deleteUser(user)" class="btn btn-danger">Delete user</button>
           <hr>
           <!-- New user adder -->
           <p style="font-size: large; text-align: center;">add user</p>
@@ -36,11 +38,11 @@
       <hr>
       <!-- display currently selected user -->
       <p class="currentUser">{{user}} </p>
-      <!-- Delete user button -->
-      <button (click)="deleteUser(user)" class="btn btn-danger">Delete user</button>
       <!-- Shows off binding with text updating live -->
       <input type="text" [(ngModel)]="myContent" placeholder="add item for selected user" style="width: 100%;">
       <h2>{{ myContent }}</h2>
+      <input type="text" [(ngModel)]="myPrice" placeholder="add price for selected item" style="width: 100%;">
+      <h2>€{{ myPrice }}</h2>
       <!-- Post button which pushes the data in myContent -->
       <button (click)="postData()" class="btn btn-primary">Post</button>
       <!-- inbetween the {{}} you can use maths like you see the values getting substracted here -->

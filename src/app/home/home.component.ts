@@ -29,6 +29,7 @@ export class HomeComponent {
   storedBudget:number=0;
   totalPrice: any;
   newPrice:number=0;
+  myPrice: number=0;
 
 
 
@@ -123,6 +124,7 @@ export class HomeComponent {
       body: JSON.stringify({
         'title': this.myContent,
         'owner': this.user,
+        'price': this.myPrice,
         'done':false,
       })
     };
@@ -135,6 +137,7 @@ export class HomeComponent {
         this.fetchMyData();
         // make sure the content cleared upon post
         this.myContent = '';
+        this.myPrice = 0;
       })
       .catch(err => console.error(err));
   }
