@@ -20,13 +20,6 @@
       "done": false,
       "id": 7,
       "price": "20"
-    },
-    {
-      "title": "Dice",
-      "owner": "Cobe",
-      "price": "10",
-      "done": false,
-      "id": 8
     }
   ],
   "users": [

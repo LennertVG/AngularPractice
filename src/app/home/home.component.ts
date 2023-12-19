@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+// Add toaster import
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +33,8 @@ export class HomeComponent {
   newPrice:number=0;
   myPrice: number=0;
 
-
+  // Add toasterservice
+  constructor(private toastr: ToastrService) { }
 
   // Christmas counter increase or decrease value
   increaseCount() {
@@ -54,7 +57,7 @@ export class HomeComponent {
       // THIS WILL CALCULATE THE TOTAL SPENT IN THE SHOPPING LIST
       this.totalPrice = this.todos.reduce((total, todo)=>total +parseFloat(todo.price),0)
     })
-  }
+  };
 // fetches the users api-endpoint and adds it to an array named users
   fetchMyUsers() {
     fetch(this.urlUsers)
@@ -63,6 +66,7 @@ export class HomeComponent {
   }
 
   ngOnInit() {
+    this.toastr.success('hello world!', 'Toastr fun!')
     // Fetch data when initialized
     this.fetchMyData();
     this.fetchMyUsers();
@@ -216,7 +220,7 @@ export class HomeComponent {
       body: payload
     };
     
-    fetch('http://localhost:3000/todo/'+user.id, options)
+    fetch('http://localhost:3000/presents/'+user.id, options)
       .then(response => response.json())
       .then(response => this.fetchMyData())
       .catch(err => console.error(err));
@@ -233,7 +237,7 @@ export class HomeComponent {
         body: payload
       };
       
-      fetch('http://localhost:3000/todo/'+user.id, options)
+      fetch('http://localhost:3000/presents/'+user.id, options)
         .then(response => response.json())
         .then(response => this.fetchMyData())
         .catch(err => console.error(err));

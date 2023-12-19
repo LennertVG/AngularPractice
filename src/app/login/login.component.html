@@ -1,1 +1,12 @@
-<p>login works!</p>
+<!-- login.component.html -->
+<div  class="container">
+	<div  class="row">
+		<div  class="col-md-12">
+			<h1>Login</h1>
+			<input  class="form-control"  type="text"  [(ngModel)]="username"  placeholder="Username">
+			<input  class="form-control"  type="password"  [(ngModel)]="password"  placeholder="Password">
+			<button  (click)="onSubmit()"  type="submit">Login</button>
+			<button  (click)="logout()"  type="submit">Logout</button>
+		</div>
+	</div>
+</div>
