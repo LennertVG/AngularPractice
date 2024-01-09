@@ -32,6 +32,7 @@ export class HomeComponent {
   totalPrice: any;
   newPrice:number=0;
   myPrice: number=0;
+  username: any;
 
   // Add toasterservice
   constructor(private toastr: ToastrService) { }
@@ -127,7 +128,7 @@ export class HomeComponent {
       // Stringify omdat we tekst moeten meegeven
       body: JSON.stringify({
         'title': this.myContent,
-        'owner': this.user,
+        'owner': this.username,
         'price': this.myPrice,
         'done':false,
       })
@@ -170,7 +171,7 @@ export class HomeComponent {
   addUser() {
     const userData = JSON.stringify({
       // the this.newUser and this.newPassword refer to the ngModel's in the HTML with the same values, don't forget to declare at the top
-      'name': this.newUser,
+      'username': this.newUser,
       'password': this.newPassword
     })
     const options = {
@@ -220,7 +221,7 @@ export class HomeComponent {
       body: payload
     };
     
-    fetch('http://localhost:3000/presents/'+user.id, options)
+    fetch('http://localhost:3000/todo/'+user.id, options)
       .then(response => response.json())
       .then(response => this.fetchMyData())
       .catch(err => console.error(err));
@@ -237,7 +238,7 @@ export class HomeComponent {
         body: payload
       };
       
-      fetch('http://localhost:3000/presents/'+user.id, options)
+      fetch('http://localhost:3000/todo/'+user.id, options)
         .then(response => response.json())
         .then(response => this.fetchMyData())
         .catch(err => console.error(err));

@@ -3,6 +3,8 @@ import { Routes } from  '@angular/router';
 import { HomeComponent } from  './home/home.component';
 import { AboutComponent } from  './about/about.component';
 import { ContactComponent } from  './contact/contact.component';
+import { DetailsComponent } from './details/details.component';
+import { ImgUploadComponent } from './img-upload/img-upload.component';
 
 // import auth guard and login component
 import { authGuard } from  './auth.guard';
@@ -31,5 +33,17 @@ export  const  routes:  Routes  = [
 	{
 	path: 'login',
 	component: LoginComponent
+	},
+	{
+	path: 'details',
+	component: DetailsComponent
+	},
+	{
+	path: 'detail/:id',
+	component: DetailsComponent
+	},
+	{
+	path: 'imgUpload',
+	component: ImgUploadComponent
 	}
 ];

@@ -19,32 +19,32 @@
       "owner": "Cobe",
       "done": false,
       "id": 7,
-      "price": "20"
+      "price": "50"
     }
   ],
   "users": [
     {
       "id": 1,
-      "name": "Lennert",
+      "username": "Lennert",
       "password": "Password"
     },
     {
       "id": 2,
-      "name": "Lauren",
+      "username": "Lauren",
       "password": "Password1"
     },
     {
       "id": 3,
-      "name": "Cobe",
+      "username": "Cobe",
       "password": "ForTheEmperor123"
     },
     {
-      "name": "userName",
+      "username": "userName",
       "password": "password",
       "id": 4
     },
     {
-      "name": "ccxvvcv",
+      "username": "ccxvvcv",
       "password": "xvvcxv",
       "id": 9
     }

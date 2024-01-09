@@ -13,11 +13,11 @@
       <!-- users dropdown menu -->  
       <div class="dropdown">
         <p style="text-align: center; font-size: large;">select a user</p>
-        <select class="form-control" [(ngModel)]="user">
+        <select class="form-control" [(ngModel)]="username">
           <!-- iterate for array -->
           @for(user of users; track user.id){
           <!-- Using the brackets you can show the user which is currently selected, though because it's already assigned in the select field, it takes that value already --> 
-          <option [value]="user.name">{{user.name}}</option>
+          <option [value]="user.username">{{user.username}}</option>
           }</select>
           <!-- Delete user button
           <button (click)="deleteUser(user)" class="btn btn-danger">Delete user</button> -->
